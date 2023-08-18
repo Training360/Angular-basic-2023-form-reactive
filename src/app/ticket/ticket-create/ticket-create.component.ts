@@ -1,5 +1,6 @@
 import { Component, Input, inject, numberAttribute } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketService } from 'src/app/service/ticket.service';
@@ -12,6 +13,8 @@ import { TicketService } from 'src/app/service/ticket.service';
 export class TicketCreateComponent {
 
   ticketService = inject(TicketService);
+
+  router = inject(Router);
 
   ticket = new Ticket();
 
@@ -86,6 +89,12 @@ export class TicketCreateComponent {
         }
         return null;
       })
+    );
+  }
+
+  onCreate(): void {
+    this.ticketService.create(this.form.value).subscribe(
+      created => this.router.navigate(['/ticket'])
     );
   }
 
