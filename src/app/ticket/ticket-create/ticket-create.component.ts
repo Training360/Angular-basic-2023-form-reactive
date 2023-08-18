@@ -1,5 +1,5 @@
 import { Component, Input, inject, numberAttribute } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketService } from 'src/app/service/ticket.service';
 
@@ -14,19 +14,33 @@ export class TicketCreateComponent {
 
   ticket = new Ticket();
 
-  /*
-  id?: number = 0;
-  flightNumber: string = '';
-  seat: string = '';
-  service: 'tourist' | 'business' | 'economy' = 'economy';
-  checked: boolean = false;
-  */
-
   form: FormGroup = new FormGroup({
-    flightNumber: new FormControl<string>(''),
-    seat: new FormControl<string>(''),
-    service: new FormControl<string>(''),
-    checked: new FormControl<boolean>(false),
+    flightNumber: new FormControl<string>({
+      value: '',
+      disabled: false,
+    }, {
+      validators: [
+        Validators.required,
+        Validators.pattern(/^[A-Za-z]{2}[0-9]{4}$/),
+      ],
+    }),
+    seat: new FormControl<string>({
+      value: '',
+      disabled: false,
+    }, {
+      validators: [
+        Validators.required,
+        Validators.pattern(/^[A-Za-z][0-9]$/),
+      ],
+    }),
+    service: new FormControl<string>({
+      value: '',
+      disabled: false,
+    }),
+    checked: new FormControl<boolean>({
+      value: false,
+      disabled: false,
+    }),
   });
 
 }
