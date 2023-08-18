@@ -14,3 +14,29 @@ Reactive Angular Forms
 - [TicketCreateComponent HTML](src\app\ticket\ticket-create\ticket-create.component.html)
 
 ## Lesson-03
+- [TicketsComponent](src\app\ticket\tickets\tickets.component.html)
+- [TicketCreateComponent](src\app\ticket\ticket-create\ticket-create.component.ts)
+- [TicketCreateComponent HTML](src\app\ticket\ticket-create\ticket-create.component.html)
+- [TicketCreateComponent SCSS](src\app\ticket\ticket-create\ticket-create.component.scss)
+
+## Lesson-04
+
+
+form: FormGroup = new FormGroup({
+    flightNumber: new FormControl<string>({
+      value: '',
+      disabled: false,
+    }),
+    seat: new FormControl<string>({
+      value: '',
+      disabled: false,
+    }),
+    service: new FormControl<string>({
+      value: '',
+      disabled: false,
+    }),
+    checked: new FormControl<boolean>({
+      value: false,
+      disabled: false,
+    }),
+  });

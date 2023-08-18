@@ -2,14 +2,14 @@
 
   <div class="card form-card">
     <div class="card-body">
-      <h5 class="card-title">Edit Ticket</h5>
+      <h5 class="card-title">Create Ticket</h5>
       <form [formGroup]="form">
         <div class="form-group">
           <label class="form-label">flightNumber</label>
           <input
+            formControlName="flightNumber"
             type="text"
             class="form-control"
-            name="flightNumber"
             pattern="^[A-Za-z]{2}[0-9]{4}$"
             required>
           <div *ngIf="false" class="error-message">
@@ -19,7 +19,8 @@
         <div class="form-group">
           <label class="form-label">seat</label>
           <input
-            type="text" class="form-control" name="seat"
+            formControlName="seat"
+            type="text" class="form-control"
             pattern="^[A-Za-z][0-9]$"
             required>
           <div *ngIf="false" class="error-message">
@@ -29,7 +30,8 @@
         <div class="form-group">
           <label class="form-label">service</label>
           <select
-            class="form-select" name="service"
+            formControlName="service"
+            class="form-select"
             required>
               <option value="">please select</option>
               <option value="tourist">tourist</option>
@@ -42,7 +44,7 @@
         </div>
         <div class="form-check mt-3">
           <input
-            name="checked"
+            formControlName="checked"
             id="check"
             class="form-check-input"
             type="checkbox"
@@ -55,7 +57,7 @@
         <div class="d-grid mt-3">
           <button [disabled]="form.invalid" class="btn btn-primary" type="submit">
             <i class="fa fa-save"></i>
-            Save
+            Create
           </button>
         </div>
       </form>
