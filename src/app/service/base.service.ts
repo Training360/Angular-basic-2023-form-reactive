@@ -86,4 +86,15 @@ export class BaseService<T extends IBaseEntity> {
     );
   }
 
+  query(options: {[k: string]: string}): Observable<T[]> {
+    // http://localhost:3000/tickets?flightNumber=ao2778&seat=h5
+    const queryArray = [];
+    for (let key of Object.keys(options)) {
+      queryArray.push(`${key}=${options[key]}`);
+    }
+    return this.http.get<T[]>(
+      `${this.apiUrl}${this.entity}?${queryArray.join('&')}`
+    );
+  }
+
 }
