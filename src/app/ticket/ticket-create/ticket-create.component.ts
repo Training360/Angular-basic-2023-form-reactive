@@ -44,8 +44,8 @@ export class TicketCreateComponent {
   });
 
   isValid(name: string): boolean {
-    return this.form.controls[name]?.invalid
-      && this.form.controls[name]?.dirty;
+    return this.form.controls[name]?.pristine
+      || this.form.controls[name]?.valid;
   }
 
 }
