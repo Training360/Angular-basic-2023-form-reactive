@@ -1,5 +1,5 @@
 import { Component, Input, inject, numberAttribute } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Ticket } from 'src/app/model/ticket';
 import { TicketService } from 'src/app/service/ticket.service';
 
@@ -36,6 +36,10 @@ export class TicketCreateComponent {
     service: new FormControl<string>({
       value: '',
       disabled: false,
+    }, {
+      validators: [
+        this.validateAriline(),
+      ]
     }),
     checked: new FormControl<boolean>({
       value: false,
@@ -44,8 +48,25 @@ export class TicketCreateComponent {
   });
 
   isValid(name: string): boolean {
-    return this.form.controls[name]?.invalid
-      && this.form.controls[name]?.dirty;
+    return this.form.controls[name]?.pristine
+      || this.form.controls[name]?.valid;
+  }
+
+  validateAriline(): ValidatorFn {
+    return (constol: AbstractControl) => {
+      if (this.form) {
+        const flightNumber = this.form.controls['flightNumber'].value;
+        if (flightNumber.slice(0, 2).toLowerCase() !== 'wz') {
+          return null;
+        }
+
+        const service = this.form.controls['service'].value;
+        if (service === 'business') {
+          return {airlineError: 'Wizzair do not have business-class!'};
+        }
+      }
+      return null;
+    }
   }
 
 }

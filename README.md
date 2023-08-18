@@ -28,4 +28,6 @@ Reactive Angular Forms
 - [TicketCreateComponent HTML](src\app\ticket\ticket-create\ticket-create.component.html)
 
 ## Lesson-06
+- [TicketCreateComponent](src\app\ticket\ticket-create\ticket-create.component.ts)
+- [TicketCreateComponent HTML](src\app\ticket\ticket-create\ticket-create.component.html)
 
