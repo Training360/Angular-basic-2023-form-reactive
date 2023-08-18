@@ -3,7 +3,7 @@ Reactive Angular Forms
 
 ## Lesson-01
 - Explaining the course.
-- [TicketEditorComponent](src/app/ticket/ticket-editor/ticket-editor.component.ts)
+- [Reactive forms](https://angular.io/guide/reactive-forms)
 
 ## Lesson-02
 - [Bt5 Card](https://getbootstrap.com/docs/5.3/components/card/#titles-text-and-links)
