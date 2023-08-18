@@ -10,7 +10,7 @@
             formControlName="flightNumber"
             type="text"
             class="form-control">
-          <div *ngIf="false" class="error-message">
+          <div *ngIf="isValid('flightNumber')" class="error-message">
             It must consist two letters and four numbers.
           </div>
           </div>
@@ -21,7 +21,7 @@
             type="text" class="form-control"
             pattern="^[A-Za-z][0-9]$"
             required>
-          <div *ngIf="false" class="error-message">
+          <div *ngIf="isValid('seat')" class="error-message">
             It must consist a letters and a numbers.
           </div>
           </div>
@@ -36,7 +36,7 @@
               <option value="business">business</option>
               <option value="economy">economy</option>
           </select>
-          <div *ngIf="false" class="error-message">
+          <div *ngIf="isValid('service')" class="error-message">
             Please select a valid option.
           </div>
         </div>
